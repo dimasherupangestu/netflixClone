@@ -4,6 +4,8 @@ import { authOptions } from "../utils/auth";
 import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
 import Image from "next/image";
+import MovieVidio from "../components/MovieVidio";
+import RecentlyAdded from "../components/RecentlyAdded";
 
 const HomePage = async () => {
   const session = await getServerSession(authOptions);
@@ -11,10 +13,10 @@ const HomePage = async () => {
     redirect("/login");
   }
   return (
-    <div>
-      <h1>Home Page</h1>
-      <h1>{session.user?.email}</h1>
-      {/* <Image src={session.user?.image} alt="image" /> */}
+    <div className="px-5 lg:px-0 ">
+      <MovieVidio />
+      <h1 className="text-3xl font-bold">Recently Added</h1>
+      <RecentlyAdded />
     </div>
   );
 };

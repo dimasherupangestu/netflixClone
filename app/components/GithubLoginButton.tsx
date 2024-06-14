@@ -5,11 +5,12 @@ import GithubIcon from "../../public/github.svg";
 import { signIn } from "next-auth/react";
 import Image from "next/image";
 import React from "react";
+import { Github } from "lucide-react";
 
 const GithubLoginButton = () => {
   return (
     <Button onClick={() => signIn("github")} variant="outline" size={"icon"}>
-      <Image src={GithubIcon} alt="GithubIcon" className="w-5 h-5 " />
+      <Github className="w-5 h-5" />
     </Button>
   );
 };
