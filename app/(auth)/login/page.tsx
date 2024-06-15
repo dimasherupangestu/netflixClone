@@ -41,7 +41,7 @@ const LoginPage = async () => {
         <p className="text-slate-500 text-sm">
           Dont have an account?
           <Link
-            href="/login"
+            href="/register"
             className="text-white hover:underline hover:text-[#e50914] ml-1">
             Register
           </Link>
