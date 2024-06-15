@@ -41,7 +41,7 @@ const Navbar = () => {
     <div className="w-full max-w-7xl mx-auto px-4 lg:px-8 sm:px-6 py-6 flex items-center justify-between">
       <div className="flex items-center">
         <div
-          className="w-32 cursor-pointer"
+          className="w-32 cursor-pointer pl-4"
           onClick={() => handleLinkClick("/home")}>
           <Image src={logo} alt="logo" priority />
         </div>
@@ -57,16 +57,16 @@ const Navbar = () => {
           ))}
         </ul>
       </div>
-      <div className="flex gap-x-7 items-center">
+      <div className="flex gap-x-2 md:gap-x-5 lg:gap-x-6 xl:gap-x-7 items-center">
         <Search className="w-6 h-6 text-gray-300" />
         <Bell className="w-6 h-6 text-gray-300" />
         <div className="lg:hidden md:hidden sm:flex">
-          <NavigationMenu className="lg:hidden md:hidden sm:flex">
+          <NavigationMenu className="lg:hidden md:hidden sm:flex bg-transparent">
             <NavigationMenuItem>
               <NavigationMenuTrigger>
                 <Menu />
               </NavigationMenuTrigger>
-              <NavigationMenuContent className="w-32 bg-transparent">
+              <NavigationMenuContent className="w-32">
                 <ul className="flex flex-col  gap-3 p-4 ">
                   {links.map((item, index) => (
                     <div key={index}>
