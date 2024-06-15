@@ -55,5 +55,7 @@
   }
   body {
     @apply bg-black text-foreground;
+    text-decoration: none;
+    list-style: none;
   }
 }

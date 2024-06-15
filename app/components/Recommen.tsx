@@ -3,8 +3,13 @@ import prisma from "../utils/db";
 import Image from "next/image";
 import MovieCard from "./MovieCard";
 
-async function getDataRecentlyAdded() {
+async function getDataRecom() {
   const data = await prisma.movie.findMany({
+    where: {
+      category: {
+        not: "recent",
+      },
+    },
     select: {
       id: true,
       title: true,
@@ -17,15 +22,11 @@ async function getDataRecentlyAdded() {
       youtubeString: true,
       WatchLists: true,
     },
-    orderBy: {
-      release: "desc",
-    },
-    take: 4,
   });
   return data;
 }
-export default async function RecentlyAdded() {
-  const data = await getDataRecentlyAdded();
+export default async function Recommen() {
+  const data = await getDataRecom();
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4  mt-8 gap-5">
       {data?.map((item) => (

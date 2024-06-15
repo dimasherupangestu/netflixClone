@@ -1,6 +1,7 @@
 import React from "react";
 import prisma from "../utils/db";
 import { Button } from "@/components/ui/button";
+import ButtonPlay from "./ButtonPlay";
 
 async function getMovieVidio() {
   const data = await prisma.movie.findFirst({
@@ -9,7 +10,9 @@ async function getMovieVidio() {
       title: true,
       videoSource: true,
       imageString: true,
+      youtubeString: true,
       duration: true,
+
       release: true,
       age: true,
       overview: true,
@@ -28,7 +31,7 @@ async function MovieVidio() {
         loop
         src={data?.videoSource}
         muted
-        className="w-full h-[65vh] object-cover absolute top-0 left-0 -z-10 brightness-[60%]"></video>
+        className="w-full h-[65vh] object-cover absolute top-0 left-0 -z-10 brightness-[60%] md:mt-0 sm:-top-1"></video>
 
       <div className="w-[95%] h-[30%] -mt-[6rem] bg-red justify-start items-center mx-auto">
         <h1 className="text-4xl lg:text-6xl font-bold text-white">
@@ -38,10 +41,7 @@ async function MovieVidio() {
           {data?.overview}
         </p>
         <div className="flex gap-x-4 mt-2">
-          <Button variant={"destructive"} className="bg-[#e50914]">
-            See More
-          </Button>
-          <Button>More Info</Button>
+          <ButtonPlay {...data} />
         </div>
       </div>
     </div>
