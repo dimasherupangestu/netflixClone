@@ -34,7 +34,7 @@ const UserListPage = async () => {
   const session = await getServerSession(authOptions);
   const data = await getDataUser(session?.user?.email!);
   return (
-    <>
+    <div className="h-screen min-h-screen">
       <h1 className="text-2xl mt-3 font-bold uppercase">My List</h1>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4  mt-8 gap-5">
         {data?.map((item) => (
@@ -72,7 +72,7 @@ const UserListPage = async () => {
           </div>
         ))}
       </div>
-    </>
+    </div>
   );
 };
 

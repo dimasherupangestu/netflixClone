@@ -2,6 +2,7 @@ import { getServerSession } from "next-auth";
 import Navbar from "../components/Navbar";
 import { authOptions } from "../utils/auth";
 import { redirect } from "next/navigation";
+import Fotter from "../components/Fotter";
 
 export default async function HomeLayout({
   children,
@@ -15,8 +16,12 @@ export default async function HomeLayout({
   return (
     <>
       <Navbar />
-      <main className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 ">
-        {children}
+
+      <main className="h-screen min-h-screen">
+        <main className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 ">
+          {children}
+        </main>
+        <Fotter />
       </main>
     </>
   );

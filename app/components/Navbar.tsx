@@ -1,22 +1,16 @@
-"use client"; // Pastikan use client ditambahkan karena ini komponen klien
+"use client";
 
-import Image from "next/image";
-import Link from "next/link";
-import React from "react";
-import { useRouter } from "next/navigation";
-import logo from "../../public/netflix_logo.svg";
-import { Bell, Menu, Search } from "lucide-react";
-import UserNav from "./UserNav";
 import {
   NavigationMenu,
   NavigationMenuContent,
   NavigationMenuItem,
-  NavigationMenuLink,
-  NavigationMenuList,
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu";
+import { Bell, Menu } from "lucide-react";
+import { useRouter } from "next/navigation";
+import UserNav from "./UserNav";
 
-const links = [
+export const links = [
   { name: "Home", href: "/home" },
   { name: "TV Shows", href: "/home/tvShows" },
   { name: "Movies", href: "/home/movies" },
@@ -43,7 +37,9 @@ const Navbar = () => {
         <div
           className="w-32 cursor-pointer pl-4"
           onClick={() => handleLinkClick("/home")}>
-          <Image src={logo} alt="logo" priority />
+          <h1 className="text-3xl font-bold flex gap-x-1">
+            No <span className="text-[#E50914]">Flix</span>
+          </h1>
         </div>
         <ul className="lg:flex ml-14 gap-x-4 text-white hidden items-center">
           {links.map((item, index) => (
@@ -58,7 +54,6 @@ const Navbar = () => {
         </ul>
       </div>
       <div className="flex gap-x-2 md:gap-x-5 lg:gap-x-6 xl:gap-x-7 items-center">
-        <Search className="w-6 h-6 text-gray-300" />
         <Bell className="w-6 h-6 text-gray-300" />
         <div className="lg:hidden md:hidden sm:flex">
           <NavigationMenu className="lg:hidden md:hidden sm:flex bg-transparent">

@@ -82,7 +82,7 @@ const CategoryPage = async ({ params }: { params: { genre: string } }) => {
   const data = await GetDataCategory(params.genre, session?.user?.email!);
   // console.log(data, "halo");
   return (
-    <>
+    <div className="h-screen min-h-screen">
       <h1 className="text-2xl mt-3 font-bold uppercase">{params.genre}</h1>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4  mt-8 gap-5">
         {data?.map((item) => (
@@ -118,7 +118,7 @@ const CategoryPage = async ({ params }: { params: { genre: string } }) => {
           </div>
         ))}
       </div>
-    </>
+    </div>
   );
 };
 

@@ -13,13 +13,12 @@ const AuthLayout = ({ children }: { children: React.ReactNode }) => {
         fill
       />
 
-      <Image
-        src={logo}
-        alt="logo"
-        width={120}
-        height={120}
-        priority
-        className="absolute left-4 top-4  object-contain md:left-10 md:top-6 z-20"></Image>
+      <div className="absolute left-4 top-4 md:left-10 md:top-6 z-20">
+        <h1 className="text-3xl font-bold flex gap-x-1">
+          No <span className="text-[#E50914]">Flix</span>
+        </h1>
+      </div>
+
       {children}
     </div>
   );
