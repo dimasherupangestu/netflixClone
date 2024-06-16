@@ -16,7 +16,7 @@ const HomePage = async () => {
   return (
     <div className="px-5 sm:mt-0 lg:px-0 pb-7">
       <MovieVidio />
-      <h1 className="text-3xl font-bold">Recently Added</h1>
+      <h1 className="text-3xl font-bold mt-5">Recently Added</h1>
       <RecentlyAdded />
 
       <div className="mt-14 ">
