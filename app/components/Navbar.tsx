@@ -18,7 +18,8 @@ export const links = [
   { name: "My List", href: "/home/user/list" },
 ];
 
-const Navbar = () => {
+const Navbar = ({ session }: any) => {
+  // console.log("nav", session);
   const router = useRouter();
 
   const handleLinkClick = (href: string) => {

@@ -7,14 +7,28 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import Image from "next/image";
-import { authOptions } from "../utils/auth";
-
-import IconUser from "../../public/avatar.png";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { signOut } from "next-auth/react";
-export default async function UserNav() {
-  //   const session = await getServerSession(authOptions);
+import { signOut, useSession } from "next-auth/react";
+import { Skeleton } from "@/components/ui/skeleton";
+import Link from "next/link";
+
+const UserNav = () => {
+  const { data: session, status } = useSession();
+
+  if (status === "loading") {
+    // Menampilkan loading state
+    return <Skeleton className="w-8 h-8 rounded-full" />;
+  }
+
+  if (!session) {
+    // Menampilkan pesan jika pengguna belum login
+    return (
+      <Link href={"/login"}>
+        <Button variant={"ghost"}>Login</Button>
+      </Link>
+    );
+  }
+
   return (
     <>
       <DropdownMenu>
@@ -23,20 +37,23 @@ export default async function UserNav() {
             <Avatar>
               <AvatarImage
                 src={
+                  session?.user?.image ??
                   "https://jethurmdnqnkflybcqvn.supabase.co/storage/v1/object/public/userImage/avatar.png"
                 }
                 alt="Avatar"
               />
-              <AvatarFallback>User</AvatarFallback>
+              <AvatarFallback>{session?.user?.name || "User"}</AvatarFallback>
             </Avatar>
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent className="w-56" align="end" forceMount>
           <DropdownMenuLabel>
             <div className="flex flex-col space-y-2">
-              <p className="text-sm font-normal leading-none">dimas</p>
+              <p className="text-sm font-normal leading-none">
+                {session?.user?.name}
+              </p>
               <p className="text-xs leading-none text-muted-foreground">
-                dimas@gmail
+                {session?.user?.email}
               </p>
             </div>
           </DropdownMenuLabel>
@@ -51,4 +68,6 @@ export default async function UserNav() {
       </DropdownMenu>
     </>
   );
-}
+};
+
+export default UserNav;
