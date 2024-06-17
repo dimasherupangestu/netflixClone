@@ -46,13 +46,13 @@ const UserNav = () => {
             </Avatar>
           </Button>
         </DropdownMenuTrigger>
-        <DropdownMenuContent className="w-56" align="end" forceMount>
+        <DropdownMenuContent className="w-60" align="end" forceMount>
           <DropdownMenuLabel>
             <div className="flex flex-col space-y-2">
               <p className="text-sm font-normal leading-none">
-                {session?.user?.name}
+                {session?.user?.name || "User"}
               </p>
-              <p className="text-xs leading-none text-muted-foreground">
+              <p className="text-xs leading-none text-muted-foreground line-clamp-1">
                 {session?.user?.email}
               </p>
             </div>

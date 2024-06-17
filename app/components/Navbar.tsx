@@ -58,7 +58,7 @@ const Navbar = ({ session }: any) => {
         <Bell className="w-6 h-6 text-gray-300" />
         <div className="lg:hidden md:hidden sm:flex">
           <NavigationMenu className="lg:hidden md:hidden sm:flex bg-transparent">
-            <NavigationMenuItem>
+            <NavigationMenuItem className="bg-transparent">
               <NavigationMenuTrigger>
                 <Menu />
               </NavigationMenuTrigger>
